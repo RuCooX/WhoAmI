@@ -7,10 +7,10 @@ import Mitspieler from "./MitSpieler";
 import SpielerJSON from "../../Ressources/VorläufigeSpieler";
 
 //Material UI
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { Grid, Paper } from "@material-ui/core/";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core/";
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       flexGrow: 1,
@@ -21,7 +21,7 @@ export default function App() {
   const classes = useStyles();
 
   let output: JSX.Element[] = [];
-  const test = () => {
+  const renderMitspieler = () => {
     for (let i = 0; i < SpielerJSON.Mitspieler.length; i++) {
       output.push(
         <Grid item>
@@ -38,7 +38,7 @@ export default function App() {
     <View>
       <div className={classes.root}>
         <Grid container spacing={3}>
-          {test()}
+          {renderMitspieler()}
         </Grid>
       </div>
     </View>
