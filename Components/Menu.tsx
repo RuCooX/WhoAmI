@@ -1,24 +1,38 @@
 import React from "react";
 import {View} from "react-native";
-import Button from '@material-ui/core/Button';
 import {makeStyles} from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import firebaseConfig from "../Base";
 
 const useStyles = makeStyles((theme) => ({
-    button: {
-
-    }
+    button: {}
 }));
 
-export default function Menu() {
+export default function Menu({navigation}: { navigation: any }) {
     const classes = useStyles();
+
+    const handleLogout = () => {
+        firebaseConfig.auth().signOut().then(() => {
+            // Do something after logout is successful.
+            window.location.reload();
+        });
+    }
 
     return (
         <View>
-            <Button size="large" className={classes.button}>Spiel starten</Button>
+            <Button size="large"
+                    className={classes.button}
+                    onClick={() => navigation.navigate('Player')}>
+                Spiel starten
+            </Button>
             <Button size="large" className={classes.button}>Spiel erstellen</Button>
             <Button size="large" className={classes.button}>Einstellungen</Button>
             <Button size="large" className={classes.button}>Profil</Button>
-            <Button size="large" className={classes.button}>Ausloggen</Button>
+            <Button size="large"
+                    className={classes.button}
+                    onClick={() => {
+                        handleLogout()
+                    }}>Ausloggen</Button>
         </View>
     );
 }
