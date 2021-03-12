@@ -24,7 +24,7 @@ export default function App() {
   const renderMitspieler = () => {
     for (let i = 0; i < SpielerJSON.Mitspieler.length; i++) {
       output.push(
-        <Grid item>
+        <Grid item key={i}>
           <Mitspieler
             spielerName={SpielerJSON.Mitspieler[i].SpielerName}
             characterName={SpielerJSON.Mitspieler[i].Character}
