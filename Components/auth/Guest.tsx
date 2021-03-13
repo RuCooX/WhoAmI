@@ -83,7 +83,7 @@ export default function Guest({navigation}: { navigation: any }) {
                             id="name"
                             label="Nutzername"
                             name="name"
-                            autoComplete="name"
+                            autoComplete="off"
                             autoFocus
                             InputLabelProps={{
                                 classes: {
