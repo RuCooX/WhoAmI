@@ -51,7 +51,7 @@ export default function SignIn({navigation}: { navigation: any }) {
                 .signInWithEmailAndPassword(email.value, password.value)
                 .then((response) => {
                     firebaseConfig.auth().onAuthStateChanged(user => {
-                        navigation.navigate('Menu')
+                        navigation.navigate('')
                     })
                 })
                 .catch(error => {
