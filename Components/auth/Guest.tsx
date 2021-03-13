@@ -57,7 +57,7 @@ export default function Guest({navigation}: { navigation: any }) {
             await firebaseConfig
                 .auth()
                 .signInAnonymously().then((user) => {
-                    navigation.navigate('Login')
+
                 }).catch(error => {
                     alert(error);
                 });
