@@ -5,10 +5,11 @@ import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 
 //Components
-import Menu from "./Components/Menu";
-import Spielfeld from "./Components/Spielfeld";
 import SignIn from "./Components/auth/SignIn";
 import SignUp from "./Components/auth/SignUp";
+import PasswordReset from "./Components/auth/PasswordReset";
+import Menu from "./Components/Menu";
+import Spielfeld from "./Components/Spielfeld";
 import Footer from "./Components/Footer";
 
 const Stack = createStackNavigator();
@@ -21,10 +22,11 @@ export default function App() {
         prefixes: ["/"],
         config: {
             screens: {
-                Login: "",
+                Login: "login",
                 SignUp: "signUp",
-                Menu: "menu",
-                Spielfeld: "game",
+                PasswordReset: "passwordReset",
+                Menu: "",
+                Spielfeld: "game"
             },
         },
     };
@@ -55,6 +57,7 @@ export default function App() {
                     <>
                         <Stack.Screen name="Login" component={SignIn}/>
                         <Stack.Screen name="SignUp" component={SignUp}/>
+                        <Stack.Screen name="PasswordReset" component={PasswordReset}/>
                     </>
                 )}
             </Stack.Navigator>

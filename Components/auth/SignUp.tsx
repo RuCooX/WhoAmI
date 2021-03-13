@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native'
+import {Text, TextInput, TouchableOpacity, View} from 'react-native'
 
 export default function SignUp({navigation}: { navigation: any }) {
     const [name, setName] = useState('')

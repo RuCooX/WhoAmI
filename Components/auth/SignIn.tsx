@@ -20,26 +20,26 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(8),
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.primary.main,
+        alignItems: 'center'
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
+        width: '100%',
+        marginTop: theme.spacing(1)
     },
     submit: {
-        margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(3, 0, 2)
     },
 }));
 
 export default function SignIn({navigation}: { navigation: any }) {
     const classes = useStyles();
 
-    const onFooterLinkPress = () => {
+    const signUpButton = () => {
         navigation.navigate('SignUp')
+    };
+
+    const passwordResetButton = () => {
+        navigation.navigate('PasswordReset')
     };
 
     const handleLogin = useCallback(async event => {
@@ -80,7 +80,7 @@ export default function SignIn({navigation}: { navigation: any }) {
                             required
                             fullWidth
                             id="email"
-                            label="E-Mail"
+                            label="EMail"
                             name="email"
                             autoComplete="email"
                             autoFocus
@@ -105,18 +105,16 @@ export default function SignIn({navigation}: { navigation: any }) {
                             fullWidth
                             variant="contained"
                             color="primary"
-                            className={classes.submit}
-                        >
+                            size="large"
+                            className={classes.submit}>
                             LOGIN
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
+                                <Link><Text onPress={passwordResetButton}>Passwort vergessen?</Text></Link>
                             </Grid>
                             <Grid item>
-                                <Link><Text onPress={onFooterLinkPress}>Don't have an account? Sign up</Text></Link>
+                                <Link><Text onPress={signUpButton}>Registrieren</Text></Link>
                             </Grid>
                         </Grid>
                     </form>
