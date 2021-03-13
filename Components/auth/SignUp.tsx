@@ -44,7 +44,11 @@ export default function SignUp({navigation}: { navigation: any }) {
 
     const signInButton = () => {
         navigation.navigate('Login')
-    }
+    };
+
+    const signInAsGuest = () => {
+        navigation.navigate('Guest')
+    };
 
     const handleSignUp = useCallback(async event => {
 
@@ -59,72 +63,72 @@ export default function SignUp({navigation}: { navigation: any }) {
                         Registrieren
                     </Typography>
                     <form className={classes.form}>
-                                <TextField
-                                    name="name"
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    id="name"
-                                    label="Benutzername"
-                                    autoFocus
-                                    autoComplete="off"
-                                    InputLabelProps={{
-                                        classes: {
-                                            root: classes.cssLabel
-                                        },
-                                    }}
-                                    InputProps={{
-                                        classes: {
-                                            root: classes.cssOutlinedInput
-                                        }
-                                    }}
-                                />
-                                <TextField
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    id="email"
-                                    label="E-Mail-Adresse"
-                                    name="email"
-                                    autoComplete="off"
-                                    InputLabelProps={{
-                                        classes: {
-                                            root: classes.cssLabel
-                                        },
-                                    }}
-                                    InputProps={{
-                                        classes: {
-                                            root: classes.cssOutlinedInput
-                                        }
-                                    }}
-                                />
-                                <TextField
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    name="password"
-                                    label="Passwort"
-                                    type="password"
-                                    id="password"
-                                    autoComplete="off"
-                                    InputLabelProps={{
-                                        classes: {
-                                            root: classes.cssLabel
-                                        },
-                                    }}
-                                    InputProps={{
-                                        classes: {
-                                            root: classes.cssOutlinedInput
-                                        }
-                                    }}
-                                />
-                                <FormControlLabel
-                                    control={<Checkbox value="allowExtraEmails" color="primary" required/>}
-                                    label="Durch Ihre Registrierung stimmen Sie unseren Nutzungsbedingungen zu."
-                                />
+                        <TextField
+                            name="name"
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="name"
+                            label="Benutzername"
+                            autoFocus
+                            autoComplete="off"
+                            InputLabelProps={{
+                                classes: {
+                                    root: classes.cssLabel
+                                },
+                            }}
+                            InputProps={{
+                                classes: {
+                                    root: classes.cssOutlinedInput
+                                }
+                            }}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="E-Mail-Adresse"
+                            name="email"
+                            autoComplete="off"
+                            InputLabelProps={{
+                                classes: {
+                                    root: classes.cssLabel
+                                },
+                            }}
+                            InputProps={{
+                                classes: {
+                                    root: classes.cssOutlinedInput
+                                }
+                            }}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Passwort"
+                            type="password"
+                            id="password"
+                            autoComplete="off"
+                            InputLabelProps={{
+                                classes: {
+                                    root: classes.cssLabel
+                                },
+                            }}
+                            InputProps={{
+                                classes: {
+                                    root: classes.cssOutlinedInput
+                                }
+                            }}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox value="allowExtraEmails" color="primary" required/>}
+                            label="Durch Ihre Registrierung stimmen Sie unseren Nutzungsbedingungen zu."
+                        />
                         <Button
                             type="submit"
                             fullWidth
@@ -135,8 +139,11 @@ export default function SignUp({navigation}: { navigation: any }) {
                             Registrieren
                         </Button>
                         <Grid container>
-                            <Grid item>
+                            <Grid item xs>
                                 <Link><Text onPress={signInButton}>Login</Text></Link>
+                            </Grid>
+                            <Grid item>
+                                <Link><Text onPress={signInAsGuest}>Als Gast</Text></Link>
                             </Grid>
                         </Grid>
                     </form>

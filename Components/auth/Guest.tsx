@@ -7,10 +7,8 @@ import Logo from '../../images/whoamiLogo.png'
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -41,39 +39,28 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function SignIn({navigation}: { navigation: any }) {
+export default function Guest({navigation}: { navigation: any }) {
     const classes = useStyles();
 
     const signUpButton = () => {
         navigation.navigate('SignUp')
     };
 
-    const passwordResetButton = () => {
-        navigation.navigate('PasswordReset')
+    const signInButton = () => {
+        navigation.navigate('Login')
     };
 
-    const signInAsGuest = () => {
-        navigation.navigate('Guest')
-    };
-
-    const handleLogin = useCallback(async event => {
+    const handleSignInAsGuest = useCallback(async event => {
             event.preventDefault();
-            const {email, password} = event.target.elements;
+            const {name} = event.target.elements;
 
             await firebaseConfig
                 .auth()
-                .signInWithEmailAndPassword(email.value, password.value)
-                .then((response) => {
-                    firebaseConfig.auth().onAuthStateChanged(user => {
-                        navigation.navigate('')
-                    })
-                })
-                .catch(error => {
-                    alert(error)
-                })
-                .catch(error => {
-                    alert(error)
-                })
+                .signInAnonymously().then((user) => {
+                    navigation.navigate('Login')
+                }).catch(error => {
+                    alert(error);
+                });
         },
         []
     );
@@ -85,18 +72,18 @@ export default function SignIn({navigation}: { navigation: any }) {
                 <div className={classes.paper}>
                     <img src={Logo} alt="Logo" width="150px"/>
                     <Typography component="h1" variant="h4">
-                        Login
+                        Als Gast anmelden
                     </Typography>
-                    <form className={classes.form} onSubmit={handleLogin}>
+                    <form className={classes.form} onSubmit={handleSignInAsGuest}>
                         <TextField
                             variant="outlined"
                             margin="normal"
                             required
                             fullWidth
-                            id="email"
-                            label="E-Mail-Adresse"
-                            name="email"
-                            autoComplete="email"
+                            id="name"
+                            label="Nutzername"
+                            name="name"
+                            autoComplete="name"
                             autoFocus
                             InputLabelProps={{
                                 classes: {
@@ -109,31 +96,6 @@ export default function SignIn({navigation}: { navigation: any }) {
                                 }
                             }}
                         />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Passwort"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                            InputLabelProps={{
-                                classes: {
-                                    root: classes.cssLabel
-                                },
-                            }}
-                            InputProps={{
-                                classes: {
-                                    root: classes.cssOutlinedInput
-                                }
-                            }}
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary"/>}
-                            label="Angemeldet bleiben"
-                        />
                         <Button
                             type="submit"
                             fullWidth
@@ -141,19 +103,14 @@ export default function SignIn({navigation}: { navigation: any }) {
                             color="primary"
                             size="large"
                             className={classes.submit}>
-                            LOGIN
+                            ANMELDEN
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link><Text onPress={passwordResetButton}>Passwort vergessen?</Text></Link>
+                                <Link><Text onPress={signInButton}>Login</Text></Link>
                             </Grid>
                             <Grid item>
                                 <Link><Text onPress={signUpButton}>Registrieren</Text></Link>
-                            </Grid>
-                        </Grid>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link><Text onPress={signInAsGuest}>Als Gast</Text></Link>
                             </Grid>
                         </Grid>
                     </form>

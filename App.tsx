@@ -5,6 +5,7 @@ import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 
 //Components
+import Guest from "./Components/auth/Guest";
 import SignIn from "./Components/auth/SignIn";
 import SignUp from "./Components/auth/SignUp";
 import PasswordReset from "./Components/auth/PasswordReset";
@@ -22,6 +23,7 @@ export default function App() {
         prefixes: ["/"],
         config: {
             screens: {
+                Guest: "guest",
                 Login: "login",
                 SignUp: "signUp",
                 PasswordReset: "passwordReset",
@@ -55,6 +57,7 @@ export default function App() {
                     </>
                 ) : (
                     <>
+                        <Stack.Screen name="Guest" component={Guest}/>
                         <Stack.Screen name="Login" component={SignIn}/>
                         <Stack.Screen name="SignUp" component={SignUp}/>
                         <Stack.Screen name="PasswordReset" component={PasswordReset}/>
