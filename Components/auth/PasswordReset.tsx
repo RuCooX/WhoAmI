@@ -16,14 +16,24 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(8),
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     form: {
         width: '100%',
-        marginTop: theme.spacing(1),
+        marginTop: theme.spacing(1)
+    },
+    cssLabel: {
+        padding: '10px',
+        borderRadius: "20px 20px 20px 20px"
+    },
+    cssOutlinedInput: {
+        padding: '10px',
+        borderRadius: "25px 25px 25px 25px"
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+        borderRadius: "25px 25px 25px 25px",
+        padding: '15px'
     },
 }));
 
@@ -56,6 +66,16 @@ export default function PasswordReset({navigation}: { navigation: any }) {
                                     label="E-mail-Adresse"
                                     name="email"
                                     autoComplete="email"
+                                    InputLabelProps={{
+                                        classes: {
+                                            root: classes.cssLabel
+                                        },
+                                    }}
+                                    InputProps={{
+                                        classes: {
+                                            root: classes.cssOutlinedInput,
+                                        }
+                                    }}
                                 />
                             </Grid>
                         </Grid>

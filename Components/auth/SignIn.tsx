@@ -26,9 +26,19 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         marginTop: theme.spacing(1)
     },
-    submit: {
-        margin: theme.spacing(3, 0, 2)
+    cssLabel: {
+        padding: '10px',
+        borderRadius: "20px 20px 20px 20px"
     },
+    cssOutlinedInput: {
+        padding: '10px',
+        borderRadius: "25px 25px 25px 25px"
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+        borderRadius: "25px 25px 25px 25px",
+        padding: '15px'
+    }
 }));
 
 export default function SignIn({navigation}: { navigation: any }) {
@@ -84,6 +94,16 @@ export default function SignIn({navigation}: { navigation: any }) {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            InputLabelProps={{
+                                classes: {
+                                    root: classes.cssLabel
+                                },
+                            }}
+                            InputProps={{
+                                classes: {
+                                    root: classes.cssOutlinedInput,
+                                }
+                            }}
                         />
                         <TextField
                             variant="outlined"
@@ -95,6 +115,16 @@ export default function SignIn({navigation}: { navigation: any }) {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            InputLabelProps={{
+                                classes: {
+                                    root: classes.cssLabel
+                                },
+                            }}
+                            InputProps={{
+                                classes: {
+                                    root: classes.cssOutlinedInput
+                                }
+                            }}
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary"/>}
