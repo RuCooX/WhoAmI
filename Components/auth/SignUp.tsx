@@ -130,7 +130,7 @@ export default function SignUp({navigation}: { navigation: any }) {
                             label="Durch Ihre Registrierung stimmen Sie unseren Nutzungsbedingungen zu."
                         />
                         <Button
-                            type="submit"
+                            // type="submit"
                             fullWidth
                             size="large"
                             variant="contained"
