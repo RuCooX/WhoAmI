@@ -17,26 +17,22 @@ export default function SignUp({navigation}: { navigation: any }) {
     return (
         <View>
             <TextInput
-                placeholder='Full Name'
+                placeholder='name'
                 value={name}
-                autoCapitalize="none"
             />
             <TextInput
                 placeholder='E-mail'
                 value={email}
-                autoCapitalize="none"
             />
             <TextInput
                 secureTextEntry
                 placeholder='Password'
                 value={password}
-                autoCapitalize="none"
             />
             <TextInput
                 secureTextEntry
                 placeholder='Confirm Password'
                 value={confirmPassword}
-                autoCapitalize="none"
             />
             <TouchableOpacity
                 onPress={() => onRegisterPress()}>
