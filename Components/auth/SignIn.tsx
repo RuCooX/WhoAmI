@@ -80,7 +80,7 @@ export default function SignIn({navigation}: { navigation: any }) {
                             required
                             fullWidth
                             id="email"
-                            label="EMail"
+                            label="E-Mail-Adresse"
                             name="email"
                             autoComplete="email"
                             autoFocus
@@ -91,14 +91,14 @@ export default function SignIn({navigation}: { navigation: any }) {
                             required
                             fullWidth
                             name="password"
-                            label="Password"
+                            label="Passwort"
                             type="password"
                             id="password"
                             autoComplete="current-password"
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary"/>}
-                            label="Remember me"
+                            label="Angemeldet bleiben"
                         />
                         <Button
                             type="submit"

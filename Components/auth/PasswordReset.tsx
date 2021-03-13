@@ -53,7 +53,7 @@ export default function PasswordReset({navigation}: { navigation: any }) {
                                     required
                                     fullWidth
                                     id="email"
-                                    label="Email"
+                                    label="E-mail-Adresse"
                                     name="email"
                                     autoComplete="email"
                                 />
