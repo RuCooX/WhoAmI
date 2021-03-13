@@ -80,7 +80,7 @@ export default function SignIn({navigation}: { navigation: any }) {
                 <CssBaseline/>
                 <div className={classes.paper}>
                     <img src={Logo} alt="Logo" width="150px"/>
-                    <Typography component="h1" variant="h5">
+                    <Typography component="h1" variant="h4">
                         Login
                     </Typography>
                     <form className={classes.form} onSubmit={handleLogin}>

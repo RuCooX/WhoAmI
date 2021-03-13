@@ -59,11 +59,10 @@ export default function SignUp({navigation}: { navigation: any }) {
                         Registrieren
                     </Typography>
                     <form className={classes.form}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
                                 <TextField
                                     name="name"
                                     variant="outlined"
+                                    margin="normal"
                                     required
                                     fullWidth
                                     id="name"
@@ -81,10 +80,9 @@ export default function SignUp({navigation}: { navigation: any }) {
                                         }
                                     }}
                                 />
-                            </Grid>
-                            <Grid item xs={12}>
                                 <TextField
                                     variant="outlined"
+                                    margin="normal"
                                     required
                                     fullWidth
                                     id="email"
@@ -102,10 +100,9 @@ export default function SignUp({navigation}: { navigation: any }) {
                                         }
                                     }}
                                 />
-                            </Grid>
-                            <Grid item xs={12}>
                                 <TextField
                                     variant="outlined"
+                                    margin="normal"
                                     required
                                     fullWidth
                                     name="password"
@@ -124,14 +121,10 @@ export default function SignUp({navigation}: { navigation: any }) {
                                         }
                                     }}
                                 />
-                            </Grid>
-                            <Grid item xs={12}>
                                 <FormControlLabel
                                     control={<Checkbox value="allowExtraEmails" color="primary" required/>}
                                     label="Durch Ihre Registrierung stimmen Sie unseren Nutzungsbedingungen zu."
                                 />
-                            </Grid>
-                        </Grid>
                         <Button
                             type="submit"
                             fullWidth
