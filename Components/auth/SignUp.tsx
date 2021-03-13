@@ -1,46 +1,154 @@
-import React, {useState} from 'react'
-import {Text, TextInput, TouchableOpacity, View} from 'react-native'
+import React, {useCallback} from "react";
+import {Text, View} from "react-native";
+
+//Material-UI
+import {makeStyles} from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Link from "@material-ui/core/Link";
+
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    form: {
+        width: '100%',
+        marginTop: theme.spacing(1)
+    },
+    cssLabel: {
+        padding: '10px',
+        borderRadius: "20px 20px 20px 20px"
+    },
+    cssOutlinedInput: {
+        padding: '10px',
+        borderRadius: "25px 25px 25px 25px"
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+        borderRadius: "25px 25px 25px 25px",
+        padding: '15px'
+    }
+}));
 
 export default function SignUp({navigation}: { navigation: any }) {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
+    const classes = useStyles();
 
-    const onFooterLinkPress = () => {
+    const signInButton = () => {
         navigation.navigate('Login')
     }
 
-    const onRegisterPress = () => {
-    }
+    const handleSignUp = useCallback(async event => {
+
+    }, []);
 
     return (
         <View>
-            <TextInput
-                placeholder='name'
-                value={name}
-            />
-            <TextInput
-                placeholder='E-mail'
-                value={email}
-            />
-            <TextInput
-                secureTextEntry
-                placeholder='Password'
-                value={password}
-            />
-            <TextInput
-                secureTextEntry
-                placeholder='Confirm Password'
-                value={confirmPassword}
-            />
-            <TouchableOpacity
-                onPress={() => onRegisterPress()}>
-                <Text>Create account</Text>
-            </TouchableOpacity>
-            <View>
-                <Text>Already got an account? <Text onPress={onFooterLinkPress}>Log in</Text></Text>
-            </View>
+            <Container maxWidth="xs">
+                <CssBaseline/>
+                <div className={classes.paper}>
+                    <Typography component="h1" variant="h4">
+                        Registrieren
+                    </Typography>
+                    <form className={classes.form}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12}>
+                                <TextField
+                                    name="name"
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="name"
+                                    label="Benutzername"
+                                    autoFocus
+                                    autoComplete="off"
+                                    InputLabelProps={{
+                                        classes: {
+                                            root: classes.cssLabel
+                                        },
+                                    }}
+                                    InputProps={{
+                                        classes: {
+                                            root: classes.cssOutlinedInput
+                                        }
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    label="E-Mail-Adresse"
+                                    name="email"
+                                    autoComplete="off"
+                                    InputLabelProps={{
+                                        classes: {
+                                            root: classes.cssLabel
+                                        },
+                                    }}
+                                    InputProps={{
+                                        classes: {
+                                            root: classes.cssOutlinedInput
+                                        }
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Passwort"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="off"
+                                    InputLabelProps={{
+                                        classes: {
+                                            root: classes.cssLabel
+                                        },
+                                    }}
+                                    InputProps={{
+                                        classes: {
+                                            root: classes.cssOutlinedInput
+                                        }
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormControlLabel
+                                    control={<Checkbox value="allowExtraEmails" color="primary" required/>}
+                                    label="Durch Ihre Registrierung stimmen Sie unseren Nutzungsbedingungen zu."
+                                />
+                            </Grid>
+                        </Grid>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            size="large"
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}>
+                            Registrieren
+                        </Button>
+                        <Grid container>
+                            <Grid item>
+                                <Link><Text onPress={signInButton}>Login</Text></Link>
+                            </Grid>
+                        </Grid>
+                    </form>
+                </div>
+            </Container>
         </View>
-    )
-}
+    );
+};
