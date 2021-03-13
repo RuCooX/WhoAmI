@@ -23,11 +23,13 @@ export default function Menu({navigation}: { navigation: any }) {
 
     return (
         <View>
+            <div>
+                Eingeloggt als: {firebaseConfig.auth().currentUser?.displayName}
+            </div>
             <Button
                 size="large"
                 className={classes.button}
-                onClick={() => navigation.navigate("Spielfeld")}
-            >
+                onClick={() => navigation.navigate("Spielfeld")}>
                 Spiel starten
             </Button>
             <Button size="large" className={classes.button}>

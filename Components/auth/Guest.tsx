@@ -52,12 +52,19 @@ export default function Guest({navigation}: { navigation: any }) {
 
     const handleSignInAsGuest = useCallback(async event => {
             event.preventDefault();
-            const {name} = event.target.elements;
+            const {displayName} = event.target.elements;
 
             await firebaseConfig
                 .auth()
-                .signInAnonymously().then((user) => {
+                .signInAnonymously().then((userCredential) => {
+                    if (userCredential) {
+                        userCredential.user?.updateProfile({
+                            displayName: displayName.value
+                        }).then(() => {
 
+                        })
+                    }
+                    console.log(displayName.value)
                 }).catch(error => {
                     alert(error);
                 });
@@ -80,9 +87,9 @@ export default function Guest({navigation}: { navigation: any }) {
                             margin="normal"
                             required
                             fullWidth
-                            id="name"
+                            id="displayName"
                             label="Nutzername"
-                            name="name"
+                            name="displayName"
                             autoComplete="off"
                             autoFocus
                             InputLabelProps={{
