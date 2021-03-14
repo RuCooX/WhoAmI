@@ -17,7 +17,7 @@ const useStyles = makeStyles(() =>
     },
   })
 );
-export default function App() {
+export default function Spieler() {
   const classes = useStyles();
 
   let output: JSX.Element[] = [];
