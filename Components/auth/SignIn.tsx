@@ -1,5 +1,7 @@
-import React, {useCallback} from "react";
-import {Text, View} from "react-native";
+import React, {useCallback} from 'react'
+import {Text, View} from 'react-native'
+import firebaseConfig from "../../Base";
+import Logo from '../../images/whoamiLogo.png'
 
 //Material-UI
 import {makeStyles} from '@material-ui/core/styles';
@@ -8,10 +10,10 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -39,51 +41,53 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function SignUp({navigation}: { navigation: any }) {
+export default function SignIn({navigation}: { navigation: any }) {
     const classes = useStyles();
 
-    const signInButton = () => {
-        navigation.navigate('Login')
+    const signUpButton = () => {
+        navigation.navigate('SignUp')
+    };
+
+    const passwordResetButton = () => {
+        navigation.navigate('PasswordReset')
     };
 
     const signInAsGuest = () => {
         navigation.navigate('Guest')
     };
 
-    const handleSignUp = useCallback(async event => {
+    const handleLogin = useCallback(async event => {
+            event.preventDefault();
+            const {email, password} = event.target.elements;
 
-    }, []);
+            await firebaseConfig
+                .auth()
+                .signInWithEmailAndPassword(email.value, password.value)
+                .then((response) => {
+                    firebaseConfig.auth().onAuthStateChanged(user => {
+                        navigation.navigate('')
+                    })
+                })
+                .catch(error => {
+                    alert(error)
+                })
+                .catch(error => {
+                    alert(error)
+                })
+        },
+        []
+    );
 
     return (
         <View>
             <Container maxWidth="xs">
                 <CssBaseline/>
                 <div className={classes.paper}>
+                    <img src={Logo} alt="Logo" width="150px"/>
                     <Typography component="h1" variant="h4">
-                        Registrieren
+                        Login
                     </Typography>
-                    <form className={classes.form}>
-                        <TextField
-                            name="name"
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="name"
-                            label="Benutzername"
-                            autoFocus
-                            autoComplete="off"
-                            InputLabelProps={{
-                                classes: {
-                                    root: classes.cssLabel
-                                },
-                            }}
-                            InputProps={{
-                                classes: {
-                                    root: classes.cssOutlinedInput
-                                }
-                            }}
-                        />
+                    <form className={classes.form} onSubmit={handleLogin}>
                         <TextField
                             variant="outlined"
                             margin="normal"
@@ -92,7 +96,8 @@ export default function SignUp({navigation}: { navigation: any }) {
                             id="email"
                             label="E-Mail-Adresse"
                             name="email"
-                            autoComplete="off"
+                            autoComplete="email"
+                            autoFocus
                             InputLabelProps={{
                                 classes: {
                                     root: classes.cssLabel
@@ -100,7 +105,7 @@ export default function SignUp({navigation}: { navigation: any }) {
                             }}
                             InputProps={{
                                 classes: {
-                                    root: classes.cssOutlinedInput
+                                    root: classes.cssOutlinedInput,
                                 }
                             }}
                         />
@@ -113,7 +118,7 @@ export default function SignUp({navigation}: { navigation: any }) {
                             label="Passwort"
                             type="password"
                             id="password"
-                            autoComplete="off"
+                            autoComplete="current-password"
                             InputLabelProps={{
                                 classes: {
                                     root: classes.cssLabel
@@ -126,23 +131,28 @@ export default function SignUp({navigation}: { navigation: any }) {
                             }}
                         />
                         <FormControlLabel
-                            control={<Checkbox value="allowExtraEmails" color="primary" required/>}
-                            label="Durch Ihre Registrierung stimmen Sie unseren Nutzungsbedingungen zu."
+                            control={<Checkbox value="remember" color="primary"/>}
+                            label="Angemeldet bleiben"
                         />
                         <Button
-                            // type="submit"
+                            type="submit"
                             fullWidth
-                            size="large"
                             variant="contained"
                             color="primary"
+                            size="large"
                             className={classes.submit}>
-                            Registrieren
+                            LOGIN
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link><Text onPress={signInButton}>Login</Text></Link>
+                                <Link><Text onPress={passwordResetButton}>Passwort vergessen?</Text></Link>
                             </Grid>
                             <Grid item>
+                                <Link><Text onPress={signUpButton}>Registrieren</Text></Link>
+                            </Grid>
+                        </Grid>
+                        <Grid container>
+                            <Grid item xs>
                                 <Link><Text onPress={signInAsGuest}>Als Gast</Text></Link>
                             </Grid>
                         </Grid>
@@ -150,5 +160,5 @@ export default function SignUp({navigation}: { navigation: any }) {
                 </div>
             </Container>
         </View>
-    );
-};
+    )
+}
