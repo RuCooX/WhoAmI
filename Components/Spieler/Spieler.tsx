@@ -13,7 +13,9 @@ import { Grid } from "@material-ui/core/";
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      flexGrow: 1,
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "center",
     },
   })
 );
@@ -24,23 +26,14 @@ export default function Spieler() {
   const renderMitspieler = () => {
     for (let i = 0; i < SpielerJSON.Mitspieler.length; i++) {
       output.push(
-        <Grid item key={i}>
-          <Mitspieler
-            spielerName={SpielerJSON.Mitspieler[i].SpielerName}
-            characterName={SpielerJSON.Mitspieler[i].Character}
-          ></Mitspieler>
-        </Grid>
+        <Mitspieler
+          key={i}
+          spielerName={SpielerJSON.Mitspieler[i].SpielerName}
+          characterName={SpielerJSON.Mitspieler[i].Character}
+        ></Mitspieler>
       );
     }
     return output;
   };
-  return (
-    <View>
-      <div className={classes.root}>
-        <Grid container spacing={3}>
-          {renderMitspieler()}
-        </Grid>
-      </div>
-    </View>
-  );
+  return <div className={classes.root}>{renderMitspieler()}</div>;
 }

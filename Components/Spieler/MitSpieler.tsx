@@ -1,8 +1,14 @@
 import React, { FC, ReactElement } from "react";
-import { View } from "react-native";
+import theme from "../../theme";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography, CardContent, Divider, Card } from "@material-ui/core/";
+import {
+  Typography,
+  CardContent,
+  Divider,
+  Card,
+  ThemeProvider,
+} from "@material-ui/core/";
 
 const useStyles = makeStyles({
   userName: {
@@ -11,9 +17,8 @@ const useStyles = makeStyles({
   character: {
     color: "red",
   },
-  cardContent: {
-    backgroundColor: "lightgray",
-  },
+  cardContent: {},
+  card: { height: "15vh", width: "15vh", margin: "1vh" },
 });
 
 type Props = {
@@ -27,15 +32,13 @@ const Mitspieler: FC<Props> = ({
   const classes = useStyles();
 
   return (
-    <View>
-      <Card>
-        <CardContent className={classes.cardContent}>
-          <Typography className={classes.userName}>{spielerName}</Typography>
-          <Divider variant="middle" />
-          <Typography className={classes.character}>{characterName}</Typography>
-        </CardContent>
-      </Card>
-    </View>
+    <Card className={classes.card}>
+      <CardContent className={classes.cardContent}>
+        <Typography className={classes.userName}>{spielerName}</Typography>
+        <Divider variant="middle" />
+        <Typography className={classes.character}>{characterName}</Typography>
+      </CardContent>
+    </Card>
   );
 };
 export default Mitspieler;

@@ -2,13 +2,13 @@ import React from "react";
 import { View } from "react-native";
 
 import { makeStyles } from "@material-ui/core/styles";
-import {} from "@material-ui/core/";
+import { Card } from "@material-ui/core";
 
 const useStyles = makeStyles({
   copyright: {
     fontSize: "1.8vh",
     textAlign: "center",
-    padding: '20px'
+    padding: "20px",
   },
 });
 
