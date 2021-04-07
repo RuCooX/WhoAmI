@@ -67,6 +67,7 @@ export default function Guest({navigation}: { navigation: any }) {
     const handleSignInAsGuest = useCallback(async event => {
             event.preventDefault();
             const {displayName} = event.target.elements;
+            setLoading(true);
 
             await firebaseConfig
                 .auth()
@@ -78,7 +79,6 @@ export default function Guest({navigation}: { navigation: any }) {
                     }
                 }).then(() => {
                     if (!loading) {
-                        setLoading(true);
                         setTimeout(() => {
                             firebaseConfig.auth().currentUser?.reload();
                             setLoading(false);
