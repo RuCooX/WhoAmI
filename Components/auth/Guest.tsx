@@ -60,11 +60,10 @@ export default function Guest({navigation}: { navigation: any }) {
                     if (userCredential) {
                         userCredential.user?.updateProfile({
                             displayName: displayName.value
-                        }).then(() => {
-
-                        })
+                        });
                     }
-                    console.log(displayName.value)
+                }).then(() => {
+                    navigation.navigate('')
                 }).catch(error => {
                     alert(error);
                 });

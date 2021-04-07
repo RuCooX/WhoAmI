@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useCallback, useContext, useEffect, useState} from "react";
+import {AuthContext} from "../App";
 import {View} from "react-native";
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -10,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Menu({navigation}: { navigation: any }) {
     const classes = useStyles();
+    const {user} = React.useContext(AuthContext);
 
     const handleLogout = () => {
         firebaseConfig
@@ -17,14 +19,17 @@ export default function Menu({navigation}: { navigation: any }) {
             .signOut()
             .then(() => {
                 // Do something after logout is successful.
-                window.location.reload();
             });
     };
+
+    useEffect(() => {
+
+    }, []);
 
     return (
         <View>
             <div>
-                Eingeloggt als: {firebaseConfig.auth().currentUser?.displayName}
+                Eingeloggt als: {user.displayName}
             </div>
             <Button
                 size="large"

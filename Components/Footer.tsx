@@ -8,7 +8,6 @@ const useStyles = makeStyles({
   copyright: {
     fontSize: "1.8vh",
     textAlign: "center",
-    padding: "20px",
   },
 });
 
