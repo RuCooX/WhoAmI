@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react'
+import React, {useCallback, useState} from 'react'
 import {Text, View} from 'react-native'
 import firebaseConfig from "../../Base";
 import Logo from '../../images/whoamiLogo.png'
@@ -7,6 +7,7 @@ import Logo from '../../images/whoamiLogo.png'
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -36,11 +37,24 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
         borderRadius: "25px 25px 25px 25px",
         padding: '15px'
+    },
+    disabledButton: {
+        backgroundColor: 'darkgray !important',
+        color: 'darkgray !important'
+    },
+    buttonProgress: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        marginTop: -12,
+        marginLeft: -12,
+        color: "#f0f0f0"
     }
 }));
 
 export default function Guest({navigation}: { navigation: any }) {
     const classes = useStyles();
+    const [loading, setLoading] = useState(false);
 
     const signUpButton = () => {
         navigation.navigate('SignUp')
@@ -63,7 +77,13 @@ export default function Guest({navigation}: { navigation: any }) {
                         });
                     }
                 }).then(() => {
-                    navigation.navigate('')
+                    if (!loading) {
+                        setLoading(true);
+                        setTimeout(() => {
+                            firebaseConfig.auth().currentUser?.reload();
+                            setLoading(false);
+                        }, 1500);
+                    }
                 }).catch(error => {
                     alert(error);
                 });
@@ -108,8 +128,11 @@ export default function Guest({navigation}: { navigation: any }) {
                             variant="contained"
                             color="primary"
                             size="large"
+                            disabled={loading}
+                            classes={{disabled: classes.disabledButton}}
                             className={classes.submit}>
                             ANMELDEN
+                            {loading && <CircularProgress size={30} className={classes.buttonProgress}/>}
                         </Button>
                         <Grid container>
                             <Grid item xs>

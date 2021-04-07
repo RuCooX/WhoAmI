@@ -49,9 +49,8 @@ export default function App() {
             if (user?.isAnonymous) {
                 user.reload().then(() => {
                     setTimeout(() => {
-                        firebaseConfig.auth().currentUser?.reload();
                         setUser(user)
-                    }, 1500);
+                    }, 500);
                 });
             }
             if (!user?.isAnonymous) {
