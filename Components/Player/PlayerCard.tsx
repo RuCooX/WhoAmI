@@ -1,31 +1,36 @@
 import React, { FC, ReactElement } from "react";
-import theme from "../../theme";
 
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Typography,
-  CardContent,
-  Divider,
-  Card,
-  ThemeProvider,
-} from "@material-ui/core/";
+import { Typography, CardContent, Divider, Card } from "@material-ui/core/";
 
 const useStyles = makeStyles({
   userName: {
     color: "black",
+    overflowX: "auto",
+    whiteSpace: "nowrap",
+    textOverflow: "unset",
   },
   character: {
     color: "red",
+    overflowX: "auto",
+    whiteSpace: "nowrap",
+    textOverflow: "unset",
   },
   cardContent: {},
-  card: { height: "15vh", width: "15vh", margin: "1vh" },
+  card: {
+    height: "5em",
+    width: "10em",
+    margin: "1vh",
+    backgroundColor: "lightblue",
+    textAlign: "center",
+  },
 });
 
 type Props = {
   spielerName: string;
   characterName: string;
 };
-const Mitspieler: FC<Props> = ({
+const PlayerCard: FC<Props> = ({
   spielerName,
   characterName,
 }): ReactElement => {
@@ -41,4 +46,4 @@ const Mitspieler: FC<Props> = ({
     </Card>
   );
 };
-export default Mitspieler;
+export default PlayerCard;
