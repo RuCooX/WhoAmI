@@ -9,6 +9,7 @@ import {
   Grid,
   Box,
   Icon,
+  IconButton,
 } from "@material-ui/core";
 
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
@@ -25,13 +26,23 @@ const useStyles = makeStyles({
     marginTop: "1vh",
     marginBottom: "1vh",
   },
-  flexBox: {
+  playerBox: {
     display: "flex",
-    flexWrap: "wrap",
+    flexWrap: "nowrap",
+    background:
+      "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(22,19,116,1) 50%, rgba(7,7,184,1) 100%)",
   },
   icon: {
     height: "12vh",
+    width: "100%",
+  },
+  iconButton: {
     width: "30vw",
+    padding: 0,
+  },
+  otherPlayer: {
+    overflowY: "auto",
+    maxHeight: "50vh",
   },
 });
 
@@ -40,13 +51,17 @@ export default function Spielfeld() {
 
   return (
     <View style={{ height: "100%" }}>
-      <Box>
+      <Box className={classes.otherPlayer}>
         <OtherPlayer />
       </Box>
-      <Box className={classes.flexBox}>
+      <Box className={classes.playerBox}>
         <Player />
-        <ThumbUpIcon className={classes.icon} />
-        <ThumbDownIcon className={classes.icon} />
+        <IconButton className={classes.iconButton}>
+          <ThumbUpIcon className={classes.icon} style={{ color: "green" }} />
+        </IconButton>
+        <IconButton className={classes.iconButton}>
+          <ThumbDownIcon className={classes.icon} style={{ color: "red" }} />
+        </IconButton>
       </Box>
       <Box className={classes.NoticeBox} bgcolor="lightblue">
         <TextField
