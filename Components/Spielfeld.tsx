@@ -2,10 +2,19 @@ import React from "react";
 import { View } from "react-native";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, ThemeProvider, TextField, Grid, Box } from "@material-ui/core";
+import {
+  Paper,
+  ThemeProvider,
+  TextField,
+  Grid,
+  Box,
+  Icon,
+} from "@material-ui/core";
+
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 
 import OtherPlayer from "./Player/otherPlayerComponent";
-import PlayerCard from "./Player/PlayerCard";
 import Player from "./Player/Player";
 
 const useStyles = makeStyles({
@@ -16,7 +25,14 @@ const useStyles = makeStyles({
     marginTop: "1vh",
     marginBottom: "1vh",
   },
-  Notice: {},
+  flexBox: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  icon: {
+    height: "12vh",
+    width: "30vw",
+  },
 });
 
 export default function Spielfeld() {
@@ -27,15 +43,16 @@ export default function Spielfeld() {
       <Box>
         <OtherPlayer />
       </Box>
-      <Box>
+      <Box className={classes.flexBox}>
         <Player />
+        <ThumbUpIcon className={classes.icon} />
+        <ThumbDownIcon className={classes.icon} />
       </Box>
       <Box className={classes.NoticeBox} bgcolor="lightblue">
         <TextField
           multiline
           variant="outlined"
           rowsMax={4}
-          className={classes.Notice}
           style={{ height: "100%", width: "98vw" }}
           placeholder="Notizen"
         />

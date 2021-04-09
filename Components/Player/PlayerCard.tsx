@@ -18,8 +18,8 @@ const useStyles = makeStyles({
   },
   cardContent: {},
   card: {
-    height: "5em",
-    width: "10em",
+    height: "12vh",
+    width: "36vw",
     margin: "1vh",
     backgroundColor: "lightblue",
     textAlign: "center",
