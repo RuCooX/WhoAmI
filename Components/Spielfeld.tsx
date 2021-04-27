@@ -2,15 +2,7 @@ import React from "react";
 import { View } from "react-native";
 
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Paper,
-  ThemeProvider,
-  TextField,
-  Grid,
-  Box,
-  Icon,
-  IconButton,
-} from "@material-ui/core";
+import { Paper, ThemeProvider, TextField, Grid, Box, Icon, IconButton } from "@material-ui/core";
 
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
@@ -29,8 +21,7 @@ const useStyles = makeStyles({
   playerBox: {
     display: "flex",
     flexWrap: "nowrap",
-    background:
-      "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(22,19,116,1) 50%, rgba(7,7,184,1) 100%)",
+    background: "gray",
   },
   icon: {
     height: "12vh",

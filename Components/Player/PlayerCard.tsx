@@ -30,10 +30,7 @@ type Props = {
   spielerName: string;
   characterName: string;
 };
-const PlayerCard: FC<Props> = ({
-  spielerName,
-  characterName,
-}): ReactElement => {
+const PlayerCard: FC<Props> = ({ spielerName, characterName }): ReactElement => {
   const classes = useStyles();
 
   return (

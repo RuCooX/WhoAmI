@@ -20,10 +20,5 @@ const useStyles = makeStyles(() =>
 export default function otherPlayerComponent() {
   const classes = useStyles();
 
-  return (
-    <PlayerCard
-      spielerName={SpielerJSON.Spieler.SpielerName}
-      characterName={SpielerJSON.Spieler.Character}
-    />
-  );
+  return <PlayerCard spielerName={SpielerJSON.Spieler.SpielerName} characterName={SpielerJSON.Spieler.Character} />;
 }

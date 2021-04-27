@@ -16,42 +16,6 @@ const VorläufigeSpieler = {
       SpielerName: "dersimli",
       Character: "Erdogan",
     },
-    {
-      SpielerName: "RunoXa",
-      Character: "Rihanna",
-    },
-    {
-      SpielerName: "Yumito",
-      Character: "Ümit",
-    },
-    {
-      SpielerName: "dersimli",
-      Character: "Erdogan",
-    },
-    {
-      SpielerName: "RunoXa",
-      Character: "Rihanna",
-    },
-    {
-      SpielerName: "Yumito",
-      Character: "Ümit",
-    },
-    {
-      SpielerName: "dersimli",
-      Character: "Erdogan",
-    },
-    {
-      SpielerName: "RunoXa",
-      Character: "Rihanna",
-    },
-    {
-      SpielerName: "Yumito",
-      Character: "Ümit",
-    },
-    {
-      SpielerName: "dersimli",
-      Character: "Erdogan",
-    },
   ],
 };
 export default VorläufigeSpieler;
