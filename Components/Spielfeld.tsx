@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   playerBox: {
     display: "flex",
     flexWrap: "nowrap",
-    background: "gray",
+    background: "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(22,19,116,1) 50%, rgba(7,7,184,1) 100%)",
   },
   icon: {
     height: "12vh",
