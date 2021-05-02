@@ -77,16 +77,17 @@ export default function Guest({navigation}: { navigation: any }) {
                             displayName: displayName.value
                         });
                     }
+
                 }).then(() => {
                     if (!loading) {
                         setTimeout(() => {
-                            firebaseConfig.auth().currentUser?.reload();
                             setLoading(false);
                         }, 1500);
                     }
                 }).catch(error => {
                     alert(error);
                 });
+
         },
         []
     );
