@@ -30,7 +30,7 @@ export default function Menu({ navigation }: { navigation: any }) {
       <Button size="large" className={classes.button} onClick={() => navigation.navigate("Spielfeld")}>
         Spiel starten
       </Button>
-      <Button size="large" className={classes.button}>
+      <Button size="large" className={classes.button} onClick={() => navigation.navigate("SpielErstellen")}>
         Spiel erstellen
       </Button>
       <Button size="large" className={classes.button}>

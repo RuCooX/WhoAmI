@@ -2,13 +2,14 @@ import React from "react";
 import { View } from "react-native";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, ThemeProvider, TextField, Grid, Box, Icon, IconButton } from "@material-ui/core";
+import { TextField, Box, IconButton } from "@material-ui/core";
 
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 
 import OtherPlayer from "./Player/otherPlayerComponent";
 import Player from "./Player/Player";
+import QuestionField from "./QuestionField";
 
 const useStyles = makeStyles({
   NoticeBox: {
@@ -35,6 +36,9 @@ const useStyles = makeStyles({
     overflowY: "auto",
     maxHeight: "50vh",
   },
+  questionField: {
+    alignSelf: "center",
+  },
 });
 
 export default function Spielfeld() {
@@ -44,6 +48,9 @@ export default function Spielfeld() {
     <View style={{ height: "100%" }}>
       <Box className={classes.otherPlayer}>
         <OtherPlayer />
+      </Box>
+      <Box className={classes.questionField}>
+        <QuestionField />
       </Box>
       <Box className={classes.playerBox}>
         <Player />
