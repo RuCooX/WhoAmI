@@ -7,6 +7,7 @@ const useStyles = makeStyles({
   copyright: {
     fontSize: "1.8vh",
     textAlign: "center",
+    background: "darkgray"
   },
 });
 

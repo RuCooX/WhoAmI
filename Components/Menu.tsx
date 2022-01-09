@@ -1,9 +1,9 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import { AuthContext } from "../App";
+import React, { useContext, useEffect } from "react";
 import { View } from "react-native";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import firebaseConfig from "../Base";
+import { AuthContext } from "./navigation/AuthNavigator";
 
 const useStyles = makeStyles((theme) => ({
   button: {},
@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Menu({ navigation }: { navigation: any }) {
   const classes = useStyles();
-  const { user } = React.useContext(AuthContext);
+  const user = useContext(AuthContext);
 
   const handleLogout = () => {
     firebaseConfig
@@ -22,15 +22,18 @@ export default function Menu({ navigation }: { navigation: any }) {
       });
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(user);
+    firebaseConfig.auth().currentUser?.reload();
+  }, []);
 
   return (
     <View>
-      <div>Eingeloggt als: {user.displayName}</div>
+      <div>Eingeloggt als:{user.displayName}</div>
       <Button size="large" className={classes.button} onClick={() => navigation.navigate("Spielfeld")}>
         Spiel starten
       </Button>
-      <Button size="large" className={classes.button} onClick={() => navigation.navigate("SpielErstellen")}>
+      <Button size="large" className={classes.button}>
         Spiel erstellen
       </Button>
       <Button size="large" className={classes.button}>
