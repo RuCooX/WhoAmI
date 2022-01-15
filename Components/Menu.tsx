@@ -5,10 +5,12 @@ import firebaseConfig from "../Base";
 import {AuthContext} from "./navigation/AuthNavigator";
 import {Box, Button} from '@material-ui/core';
 import Grid from "@material-ui/core/Grid";
+import Header from "./Header";
 
 const useStyles = makeStyles((theme) => ({
     button: {
-        margin: theme.spacing(2),
+        margin: theme.spacing(1),
+        border: '5px double grey',
         borderRadius: "25px 25px 25px 25px",
         padding: '30px',
         width: '350px'
@@ -36,8 +38,7 @@ export default function Menu({navigation}: { navigation: any }) {
 
     return (
         <View>
-            <div style={{marginBottom: '50px'}}>Eingeloggt als:{displayName}</div>
-
+            <Header/>
             <Box display="flex"
                  justifyContent="center">
                 <Grid>
