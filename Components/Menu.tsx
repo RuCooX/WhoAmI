@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {View} from "react-native";
 import {makeStyles} from "@material-ui/core/styles";
 import firebaseConfig from "../Base";
@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Menu({navigation}: { navigation: any }) {
     const classes = useStyles();
     const user = useContext(AuthContext);
+    const [displayName, setDisplayName] = useState(null);
 
     const handleLogout = () => {
         firebaseConfig
@@ -29,13 +30,13 @@ export default function Menu({navigation}: { navigation: any }) {
     };
 
     useEffect(() => {
-        console.log(user);
-        firebaseConfig.auth().currentUser?.reload();
+        // @ts-ignore
+        setDisplayName(firebaseConfig.auth().currentUser?.displayName)
     }, []);
 
     return (
         <View>
-            <div style={{marginBottom: '50px'}}>Eingeloggt als:{user.displayName}</div>
+            <div style={{marginBottom: '50px'}}>Eingeloggt als:{displayName}</div>
 
             <Box display="flex"
                  justifyContent="center">
@@ -63,7 +64,7 @@ export default function Menu({navigation}: { navigation: any }) {
                         </Button>
                     </Grid>
                     <Grid>
-                        <Button size="large" className={classes.button} variant="contained" color="primary" fullWidth
+                        <Button size="large" className={classes.button} variant="contained" color="secondary" fullWidth
                                 onClick={() => {
                                     handleLogout();
                                 }}>

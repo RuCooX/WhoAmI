@@ -69,25 +69,13 @@ export default function Guest({navigation}: { navigation: any }) {
             const {displayName} = event.target.elements;
             setLoading(true);
 
-            await firebaseConfig
-                .auth()
-                .signInAnonymously().then((userCredential) => {
-                    if (userCredential) {
-                        userCredential.user?.updateProfile({
-                            displayName: displayName.value
-                        });
-                    }
-
+            await firebaseConfig.auth().signInAnonymously().then(function () {
+                // @ts-ignore
+                firebaseConfig.auth().currentUser.updateProfile({
+                    displayName: displayName.value
                 }).then(() => {
-                    if (!loading) {
-                        setTimeout(() => {
-                            setLoading(false);
-                        }, 1500);
-                    }
-                }).catch(error => {
-                    alert(error);
                 });
-
+            });
         },
         []
     );

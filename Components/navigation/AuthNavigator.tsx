@@ -11,13 +11,21 @@ export default function AuthNavigator() {
 
     // Handle user state changes
     function onAuthStateChanged(user: React.SetStateAction<null>) {
-        if (user) {
-            console.log(user)
+        firebaseConfig.auth().currentUser?.reload();
+
+        if (firebaseConfig.auth().currentUser?.displayName) {
             setUser(user)
+        }
+
+        if (user) {
+            setTimeout(() => {
+                setUser(user)
+            }, 1500);
         } else {
             setUser(null)
             firebaseConfig.auth().currentUser?.reload();
         }
+
         if (loading) setLoading(false)
     }
 
