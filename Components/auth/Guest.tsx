@@ -47,8 +47,7 @@ const useStyles = makeStyles((theme) => ({
         top: '50%',
         left: '50%',
         marginTop: -12,
-        marginLeft: -12,
-        color: "#f0f0f0"
+        marginLeft: -12
     }
 }));
 
