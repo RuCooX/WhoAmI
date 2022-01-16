@@ -10,7 +10,7 @@ import Header from "./Header";
 const useStyles = makeStyles((theme) => ({
     button: {
         margin: theme.spacing(1),
-        border: '5px double grey',
+        border: '5px double #808080',
         borderRadius: "25px 25px 25px 25px",
         padding: '30px',
         width: '350px'
@@ -69,7 +69,7 @@ export default function Menu({navigation}: { navigation: any }) {
                                 onClick={() => {
                                     handleLogout();
                                 }}>
-                            Ausloggen
+                            Logout
                         </Button>
                     </Grid>
                 </Grid>

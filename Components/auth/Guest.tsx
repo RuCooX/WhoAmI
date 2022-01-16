@@ -99,6 +99,7 @@ export default function Guest({navigation}: { navigation: any }) {
                             label="Nutzername"
                             name="displayName"
                             autoComplete="off"
+                            inputProps={{ maxLength: 12 }}
                             autoFocus
                             InputLabelProps={{
                                 classes: {

@@ -21,7 +21,7 @@ export default function Header() {
 
     return (
         <View>
-            <div style={{marginBottom: '50px', backgroundColor: 'grey'}}>
+            <div style={{marginBottom: '50px', backgroundColor: '#808080', borderBottom: '5px double #666666'}}>
                 <Grid container spacing={2} alignItems="center">
                     <Grid item xs={4}>
                         <div className="toggle-theme-wrapper">
@@ -41,7 +41,7 @@ export default function Header() {
                         <List>
                             <ListItem style={{display: 'flex', justifyContent: 'flex-end'}}>
                                 <ListItemIcon><AccountCircleOutlined style={{fontSize: '50px'}}/></ListItemIcon>
-                                <div>{displayName}</div>
+                                <span style={{fontSize: '20px'}}>{displayName}</span>
                             </ListItem>
                         </List>
                     </Grid>
