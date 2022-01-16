@@ -98,7 +98,7 @@ export default function Guest({navigation}: { navigation: any }) {
                             label="Nutzername"
                             name="displayName"
                             autoComplete="off"
-                            inputProps={{ maxLength: 12 }}
+                            inputProps={{maxLength: 12}}
                             autoFocus
                             InputLabelProps={{
                                 classes: {
@@ -121,7 +121,7 @@ export default function Guest({navigation}: { navigation: any }) {
                             classes={{disabled: classes.disabledButton}}
                             className={classes.submit}>
                             ANMELDEN
-                            {loading && <CircularProgress size={30} className={classes.buttonProgress}/>}
+                            {loading && <CircularProgress size={35} className={classes.buttonProgress}/>}
                         </Button>
                         <Grid container>
                             <Grid item xs>

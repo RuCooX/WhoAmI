@@ -18,9 +18,9 @@ export default function SignInStack() {
           cardStyle: { backgroundColor: "darkgray" },
         }}
       >
-        <Stack.Screen name="Menu" component={Menu} />
-        <Stack.Screen name="Spielfeld" component={Spielfeld} />
-        <Stack.Screen name="SpielErstellen" component={SpielErstellen} />
+          <Stack.Screen name="Menu" component={Menu} />
+          <Stack.Screen name="Spielfeld" component={Spielfeld} />
+          <Stack.Screen name="SpielErstellen" component={SpielErstellen} />
       </Stack.Navigator>
       <Footer />
     </NavigationContainer>

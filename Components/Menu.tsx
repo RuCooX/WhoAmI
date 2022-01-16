@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from "react";
 import {View} from "react-native";
 import {makeStyles} from "@material-ui/core/styles";
 import firebaseConfig from "../Base";
-import {AuthContext} from "./navigation/AuthNavigator";
 import {Box, Button} from '@material-ui/core';
 import Grid from "@material-ui/core/Grid";
 import Header from "./Header";
@@ -19,8 +18,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Menu({navigation}: { navigation: any }) {
     const classes = useStyles();
-    const user = useContext(AuthContext);
-    const [displayName, setDisplayName] = useState(null);
 
     const handleLogout = () => {
         firebaseConfig
@@ -30,11 +27,6 @@ export default function Menu({navigation}: { navigation: any }) {
                 // Do something after logout is successful.
             });
     };
-
-    useEffect(() => {
-        // @ts-ignore
-        setDisplayName(firebaseConfig.auth().currentUser?.displayName)
-    }, []);
 
     return (
         <View>

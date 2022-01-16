@@ -51,7 +51,7 @@ export default function AuthNavigator() {
     if (loading) {
         return <>
             <div>
-                <CircularProgress size={80} className={classes.progressIcon}/>
+                <CircularProgress size={100} className={classes.progressIcon}/>
             </div>
         </>;
     }
