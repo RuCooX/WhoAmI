@@ -1,10 +1,11 @@
-import React, {useContext, useEffect, useState} from "react";
-import {View} from "react-native";
+import React from "react";
+import {ScrollView, View} from "react-native";
 import {makeStyles} from "@material-ui/core/styles";
 import firebaseConfig from "../Base";
 import {Box, Button} from '@material-ui/core';
 import Grid from "@material-ui/core/Grid";
-import Header from "./Header";
+import HeaderIn from "./HeaderIn";
+import Footer from "./Footer";
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "25px 25px 25px 25px",
         padding: '30px',
         width: '350px'
-    },
+    }
 }));
 
 export default function Menu({navigation}: { navigation: any }) {
@@ -29,43 +30,51 @@ export default function Menu({navigation}: { navigation: any }) {
     };
 
     return (
-        <View>
-            <Header/>
-            <Box display="flex"
-                 justifyContent="center">
-                <Grid>
+        <View style={{flex: 1}}>
+            <HeaderIn/>
+            <ScrollView>
+                <Box display="flex"
+                     justifyContent="center" style={{marginTop: '60px'}}>
                     <Grid>
-                        <Button size="large" className={classes.button} variant="contained" color="primary" fullWidth
-                                onClick={() => navigation.navigate("Spielfeld")}>
-                            Spiel starten
-                        </Button>
+                        <Grid>
+                            <Button size="large" className={classes.button} variant="contained" color="primary"
+                                    fullWidth
+                                    onClick={() => navigation.navigate("Spielfeld")}>
+                                Spiel starten
+                            </Button>
+                        </Grid>
+                        <Grid>
+                            <Button size="large" className={classes.button} variant="contained" color="primary"
+                                    fullWidth
+                                    onClick={() => navigation.navigate("SpielErstellen")}>
+                                Spiel erstellen
+                            </Button>
+                        </Grid>
+                        <Grid>
+                            <Button size="large" className={classes.button} variant="contained" color="primary"
+                                    fullWidth>
+                                Einstellungen
+                            </Button>
+                        </Grid>
+                        <Grid>
+                            <Button size="large" className={classes.button} variant="contained" color="primary"
+                                    fullWidth>
+                                Profil
+                            </Button>
+                        </Grid>
+                        <Grid>
+                            <Button size="large" className={classes.button} variant="contained" color="secondary"
+                                    fullWidth
+                                    onClick={() => {
+                                        handleLogout();
+                                    }}>
+                                Logout
+                            </Button>
+                        </Grid>
                     </Grid>
-                    <Grid>
-                        <Button size="large" className={classes.button} variant="contained" color="primary" fullWidth
-                                onClick={() => navigation.navigate("SpielErstellen")}>
-                            Spiel erstellen
-                        </Button>
-                    </Grid>
-                    <Grid>
-                        <Button size="large" className={classes.button} variant="contained" color="primary" fullWidth>
-                            Einstellungen
-                        </Button>
-                    </Grid>
-                    <Grid>
-                        <Button size="large" className={classes.button} variant="contained" color="primary" fullWidth>
-                            Profil
-                        </Button>
-                    </Grid>
-                    <Grid>
-                        <Button size="large" className={classes.button} variant="contained" color="secondary" fullWidth
-                                onClick={() => {
-                                    handleLogout();
-                                }}>
-                            Logout
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Box>
+                </Box>
+            </ScrollView>
+            <View><Footer/></View>
         </View>
     )
 };

@@ -3,18 +3,20 @@
     flex-direction: row;
     align-items: center;
     gap: 4px;
-    text-align: left;
+    text-align: right;
+    margin-right: 8px;
+    float: right;
 }
 
 .dm-icon {
-    font-size: 28px;
+    font-size: 27px;
 }
 
 .toggle-theme {
     position: relative;
     display: inline-block;
     height: 34px;
-    width: 60px;
+    width: 68px;
 }
 
 .toggle-theme input {
@@ -22,33 +24,34 @@
 }
 
 .slider {
-    background-color: #ccc;
+    background-color: #a6a6a6;
     position: absolute;
     cursor: pointer;
     bottom: 0;
     left: 0;
-    right: 0;
+    right: 4px;
     top: 0;
+    margin-right: 1px;
     transition: 0.2s;
 }
 
 .slider:before {
-    background-color: #fff;
-    bottom: 4px;
+    background-color: #ffffff;
+    bottom: 0;
     content: "";
-    height: 26px;
-    left: 4px;
+    height: 35px;
+    left: 0;
     position: absolute;
     transition: 0.4s;
-    width: 26px;
+    width: 34px;
 }
 
 input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(30px);
 }
 
 input:checked + .slider {
-    background-color: cornflowerblue;
+    background-color: #003d99;
 }
 
 .slider.round {
